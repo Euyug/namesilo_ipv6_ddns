@@ -1,4 +1,4 @@
-#Automatic DNS Update Script
+# Automatic DNS Update Script
 This Bash script update_dns.sh is designed to automatically update DNS records on Namesilo based on the IPv6 address of a specified network interface.
 
 Prerequisites
@@ -22,7 +22,7 @@ Copy code
 }
 Make sure to replace placeholders with your actual values.
 
-Usage
+# Usage
 Set execute permission for the script:
 bash
 Copy code
@@ -33,7 +33,7 @@ Copy code
 ./update_dns.sh
 The script will continuously monitor the IPv6 address of the specified network interface and update the DNS record on Namesilo if any changes are detected.
 
-Notes
+# Notes
 The script fetches the current IPv6 address from the specified network interface and compares it with the last recorded IPv6 address. If a change is detected, it updates the DNS record using the Namesilo API.
 It sleeps for 1 hour between updates. You can adjust the sleep duration in the script according to your preference.
 Please ensure that your Namesilo API key has the necessary permissions to update DNS records.
