@@ -32,13 +32,13 @@ Make sure to replace placeholders with your actual values.
 1. Set execute permission for the script:
 
 ```bash
-chmod +x update_dns.sh
+chmod +x ddns.sh
 ```
 
 2. Run the script:
 
 ```bash
-./update_dns.sh
+./ddns.sh
 ```
 
 The script will continuously monitor the IPv6 address of the specified network interface and update the DNS record on Namesilo if any changes are detected.
