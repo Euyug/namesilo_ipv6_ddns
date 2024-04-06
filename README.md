@@ -20,7 +20,7 @@ Create a JSON configuration file named `config.json` with the following structur
   "DOMAIN": "YOUR_DOMAIN",
   "HOSTNAME": "YOUR_HOSTNAME",
   "API_URL": "https://www.namesilo.com/api/dnsUpdateRecord",
-  "NETWORK_INTERFACE": "YOUR_NETWORK_INTERFACE",
+  "NETWORK_INTERFACE": "YOUR_NETWORK_INTERFACE(which have ipv6 address)",
   "rrid_URL": "https://www.namesilo.com/api/dnsListRecords"
 }
 ```
