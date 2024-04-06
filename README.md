@@ -24,3 +24,28 @@ Create a JSON configuration file named `config.json` with the following structur
   "rrid_URL": "https://www.namesilo.com/api/dnsListRecords"
 }
 ```
+
+Make sure to replace placeholders with your actual values.
+
+## Usage
+
+1. Set execute permission for the script:
+
+```bash
+chmod +x update_dns.sh
+```
+
+2. Run the script:
+
+```bash
+./update_dns.sh
+```
+
+The script will continuously monitor the IPv6 address of the specified network interface and update the DNS record on Namesilo if any changes are detected.
+
+## Notes
+
+- The script fetches the current IPv6 address from the specified network interface and compares it with the last recorded IPv6 address. If a change is detected, it updates the DNS record using the Namesilo API.
+- It sleeps for 1 hour between updates. You can adjust the sleep duration in the script according to your preference.
+
+Please ensure that your Namesilo API key has the necessary permissions to update DNS records.
