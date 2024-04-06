@@ -1,0 +1,8 @@
+{
+  "API_KEY": "your_apikey",
+  "DOMAIN": "your_domain",
+  "HOSTNAME": "your_subdomain",
+  "API_URL": "https://www.namesilo.com/api/dnsUpdateRecord",
+  "NETWORK_INTERFACE": "network_interface(ipv6)",
+  "rrid_URL": "https://www.namesilo.com/api/dnsListRecords"
+}
