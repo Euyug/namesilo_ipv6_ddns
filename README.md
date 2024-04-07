@@ -1,4 +1,4 @@
-# Automatic DNS Update Script
+# Namesilo IPv6 ddns
 
 This Bash script `ddns.sh` is designed to automatically update DNS records on Namesilo based on the IPv6 address of a specified network interface.
 
