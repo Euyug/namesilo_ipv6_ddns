@@ -1,7 +1,7 @@
 **[English](README.md), [中文](README_zh.md).**
 ### Namesilo IPv6 ddns
 
-极其简单易用的ipv6 ddns脚本
+简单易用的ipv6 ddns脚本
 
 #### 需要安装
 
