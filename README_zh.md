@@ -1,7 +1,7 @@
 **[English](README.md), [中文](README_zh.md).**
 ### Namesilo IPv6 ddns
 
-这个 Bash 脚本 `ddns.sh` 旨在基于指定网络接口的 IPv6 地址自动更新 Namesilo 上的 DNS 记录。
+极其简单易用的ipv6 ddns脚本
 
 #### 需要安装
 
