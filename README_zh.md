@@ -25,6 +25,17 @@
   "rrid_URL": "https://www.namesilo.com/api/dnsListRecords"
 }
 ```
+####使用
+1.为脚本设置执行权限：
 ```bash
 chmod +x ddns.sh
 ```
+2.运行：
+```bash
+./ddns.sh
+```
+该脚本将持续监视指定网络接口的 IPv6 地址，并在检测到任何更改时更新 Namesilo 上的 DNS 记录。
+####注意事项
+脚本从指定网络接口获取当前 IPv6 地址，并将其与上次记录的 IPv6 地址进行比较。如果检测到更改，则使用 Namesilo API 更新 DNS 记录。
+它在更新之间休眠 1 小时。您可以根据需要在脚本中调整睡眠持续时间。
+请确保你的 Namesilo API 密钥具有更新 DNS 记录所需的权限。
