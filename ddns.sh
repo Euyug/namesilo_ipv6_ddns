@@ -22,7 +22,6 @@ update_dns_record() {
 RRID=$(curl -s "${rrid_URL}?version=1&type=xml&key=${API_KEY}&domain=${DOMAIN}" | \
        xmlstarlet sel -t -m "//resource_record[host='${TARGET_VALUE}']" -v "record_id" -n)
 
-# 打印rrid
 if [ -n "$RRID" ]; then
     echo "RRID for ${TARGET_VALUE}: $RRID"
 else
