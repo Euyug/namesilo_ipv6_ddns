@@ -6,15 +6,19 @@ DOMAIN=$(jq -r '.DOMAIN' $CONFIG_FILE)
 HOSTNAME=$(jq -r '.HOSTNAME' $CONFIG_FILE)
 API_URL=$(jq -r '.API_URL' $CONFIG_FILE)
 rrid_URL=$(jq -r '.rrid_URL' $CONFIG_FILE)
-TARGET_VALUE="${HOSTNAME}.${DOMAIN}"
 NETWORK_INTERFACE=$(jq -r '.NETWORK_INTERFACE' $CONFIG_FILE)
+TARGET_VALUE="${HOSTNAME}.${DOMAIN}"
 
 
 
 
 
 
-# 发送HTTP请求并解析XML响应
+
+
+# Function to update DNS record
+update_dns_record() {
+# 获取rrid
 RRID=$(curl -s "${rrid_URL}?version=1&type=xml&key=${API_KEY}&domain=${DOMAIN}" | \
        xmlstarlet sel -t -m "//resource_record[host='${TARGET_VALUE}']" -v "record_id" -n)
 
@@ -24,11 +28,8 @@ if [ -n "$RRID" ]; then
 else
     echo "未找到RRID"
 fi
-#-----------------------------
-
-# Function to update DNS record
-update_dns_record() {
-    # Get current public IPv6 address
+#-----------------------------  
+# Get current public IPv6 address
     
 #    CURRENT_IPv6=$(curl -s https://api6.ipify.org)
  CURRENT_IPv6=$(ip -6 addr show dev $NETWORK_INTERFACE | grep inet6 | grep -v temporary | grep -v deprecated | grep -v 'scope link' | grep -v 'scope host' | awk '{print $2}' | awk -F '/' '{print $1}')
