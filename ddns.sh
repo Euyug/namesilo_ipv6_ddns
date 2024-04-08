@@ -48,7 +48,7 @@ fi
         if [ "$CURRENT_IPv6" != "$LAST_IPv6" ]; then
             # Update the DNS record
 #            RESPONSE=$(curl -s "$API_URL?version=1&type=xml&key=$API_KEY&domain=$DOMAIN&rrhost=$HOSTNAME&rrvalue=$CURRENT_IPv6")
-            RESPONSE=$(curl -s "$API_URL?version=1&type=xml&key=$API_KEY&domain=$DOMAIN&rrid=$RRID&rrhost=$HOSTNAME&rrvalue=$CURRENT_IPv6&rrttl=$RRTTL")
+            RESPONSE=$(curl -s "$API_URL?version=1&type=xml&key=$API_KEY&domain=$DOMAIN&rrid=$RRID&rrhost=$HOSTNAME&rrvalue=$CURRENT_IPv6")
             # Extract the response status
             STATUS=$(echo "$RESPONSE" | grep -oP '(?<=<code>)[^<]+')
 
