@@ -6,9 +6,6 @@ Simple and Easy-to-Use IPv6 DDNS Script
 ## Prerequisites
 
 Before using this script, ensure you have the following prerequisites installed:
-
-- `jq` for parsing JSON
-- `xmlstarlet` for parsing XML
 - `curl` for making HTTP requests
 
 ## Configuration
