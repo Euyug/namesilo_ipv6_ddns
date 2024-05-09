@@ -27,7 +27,7 @@ Create a JSON configuration file named `config.json` with the following structur
 ```
 
 Make sure to replace placeholders with your actual values.
-
+Get apikey：https://www.namesilo.com/account/api-manager
 ## Usage
 
 1. Set execute permission for the script:
