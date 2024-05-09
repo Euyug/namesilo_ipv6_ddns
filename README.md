@@ -40,6 +40,20 @@ chmod +x ddns.sh
 ./ddns.sh
 ```
 
+3. Run the script:
+```bash
+echo -e "[Unit]\nDescription=DDNS Service\nAfter=network.target\n\n[Service]\nType=simple\nExecStart=$(pwd)/ddns.sh\nWorkingDirectory=$(pwd)\nRestart=always\nUser=root\nGroup=root\n\n[Install]\nWantedBy=multi-user.target" | sudo tee /etc/systemd/system/ddns.service > /dev/null
+```
+
+4. Run the script:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable ddns.service
+sudo systemctl start ddns.service
+```
+
+
 The script will continuously monitor the IPv6 address of the specified network interface and update the DNS record on Namesilo if any changes are detected.
 
 ## Notes
