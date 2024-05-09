@@ -9,13 +9,27 @@ API_URL=$(grep -oP '"API_URL":\s*"\K[^"]*' $CONFIG_FILE)
 rrid_URL=$(grep -oP '"rrid_URL":\s*"\K[^"]*' $CONFIG_FILE)
 NETWORK_INTERFACE=$(grep -oP '"NETWORK_INTERFACE":\s*"\K[^"]*' $CONFIG_FILE)
 TARGET_VALUE="${HOSTNAME}.${DOMAIN}"
-
+echo "API_KEY: $API_KEY"
+echo "DOMAIN: $DOMAIN"
+echo "HOSTNAME: $HOSTNAME"
+echo "API_URL: $API_URL"
+echo "rrid_URL: $rrid_URL"
+echo "NETWORK_INTERFACE: $NETWORK_INTERFACE"
+echo "TARGET_VALUE: $TARGET_VALUE"
 # Function to update DNS record
 update_dns_record() {
     # 获取rrid
-    RRID=$(curl -s "${rrid_URL}?version=1&type=xml&key=${API_KEY}&domain=${DOMAIN}" | \
-           grep -oP '<resource_record[^\>]*>\K[^<]*' | grep "^$TARGET_VALUE:" | cut -d: -f1)
+    #获取响应
+response=$(curl -s "${rrid_URL}?version=1&type=xml&key=${API_KEY}&domain=${DOMAIN}")
 
+# 使用grep命令查找包含特定host的resource_record条目，并使用sed提取其中的record_id
+RRID=$(echo "$response" | grep "<host>${TARGET_VALUE}</host>" | sed -n 's/.*<record_id>\(.*\)<\/record_id>.*/\1/p')
+
+
+
+    
+#    RRID=$(curl -s "${rrid_URL}?version=1&type=xml&key=${API_KEY}&domain=${DOMAIN}" | \
+#           grep -oP '<resource_record[^\>]*>\K[^<]*' | grep "^$TARGET_VALUE:" | cut -d: -f1)
     if [ -n "$RRID" ]; then
         echo "RRID for ${TARGET_VALUE}: $RRID"
     else
