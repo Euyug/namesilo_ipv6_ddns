@@ -32,6 +32,20 @@ chmod +x ddns.sh
 ```bash
 ./ddns.sh
 ```
+
+3. Run the script:
+```bash
+echo -e "[Unit]\nDescription=DDNS Service\nAfter=network.target\n\n[Service]\nType=simple\nExecStart=$(pwd)/ddns.sh\nWorkingDirectory=$(pwd)\nRestart=always\nUser=root\nGroup=root\n\n[Install]\nWantedBy=multi-user.target" | sudo tee /etc/systemd/system/ddns.service > /dev/null
+```
+
+4. Run the script:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable ddns.service
+sudo systemctl start ddns.service
+```
+
 ### 注意事项
 - 脚本从指定网络接口获取当前 IPv6 地址，并将其与上次记录的 IPv6 地址进行比较。如果检测到更改，则使用 Namesilo API 更新 DNS 记录。
 - 它在更新之间休眠 1 小时。您可以根据需要在脚本中调整睡眠持续时间。
