@@ -9,13 +9,13 @@ API_URL=$(grep -oP '"API_URL":\s*"\K[^"]*' $CONFIG_FILE)
 rrid_URL=$(grep -oP '"rrid_URL":\s*"\K[^"]*' $CONFIG_FILE)
 NETWORK_INTERFACE=$(grep -oP '"NETWORK_INTERFACE":\s*"\K[^"]*' $CONFIG_FILE)
 TARGET_VALUE="${HOSTNAME}.${DOMAIN}"
-echo "API_KEY: $API_KEY"
-echo "DOMAIN: $DOMAIN"
-echo "HOSTNAME: $HOSTNAME"
-echo "API_URL: $API_URL"
-echo "rrid_URL: $rrid_URL"
-echo "NETWORK_INTERFACE: $NETWORK_INTERFACE"
-echo "TARGET_VALUE: $TARGET_VALUE"
+# echo "API_KEY: $API_KEY"
+# echo "DOMAIN: $DOMAIN"
+# echo "HOSTNAME: $HOSTNAME"
+# echo "API_URL: $API_URL"
+# echo "rrid_URL: $rrid_URL"
+# echo "NETWORK_INTERFACE: $NETWORK_INTERFACE"
+# echo "TARGET_VALUE: $TARGET_VALUE"
 # Function to update DNS record
 update_dns_record() {
     # 获取rrid
