@@ -40,12 +40,12 @@ chmod +x ddns.sh
 ./ddns.sh
 ```
 
-3. Run the script:
+3.Create the startup link:
 ```bash
 echo -e "[Unit]\nDescription=DDNS Service\nAfter=network.target\n\n[Service]\nType=simple\nExecStart=$(pwd)/ddns.sh\nWorkingDirectory=$(pwd)\nRestart=always\nUser=root\nGroup=root\n\n[Install]\nWantedBy=multi-user.target" | sudo tee /etc/systemd/system/ddns.service > /dev/null
 ```
 
-4. Run the script:
+4.Enable system startup:
 
 ```bash
 sudo systemctl daemon-reload
