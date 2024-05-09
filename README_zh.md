@@ -33,12 +33,12 @@ chmod +x ddns.sh
 ./ddns.sh
 ```
 
-2.创建自启链接:
+3.创建自启链接:
 ```bash
 echo -e "[Unit]\nDescription=DDNS Service\nAfter=network.target\n\n[Service]\nType=simple\nExecStart=$(pwd)/ddns.sh\nWorkingDirectory=$(pwd)\nRestart=always\nUser=root\nGroup=root\n\n[Install]\nWantedBy=multi-user.target" | sudo tee /etc/systemd/system/ddns.service > /dev/null
 ```
 
-2.开启系统自启:
+4.开启系统自启:
 
 ```bash
 sudo systemctl daemon-reload
