@@ -7,8 +7,6 @@
 
 在使用此脚本之前，请确保已安装：
 
-- `jq` 用于解析 JSON
-- `xmlstarlet` 用于解析 XML
 - `curl` 用于进行 HTTP 请求
 
 ## 配置
