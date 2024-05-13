@@ -30,6 +30,7 @@ Get apikey：https://www.namesilo.com/account/api-manager
 ```bash
 bash -c "$(curl --insecure -fsSL https://raw.githubusercontent.com/Euyug/namesilo_ipv6_ddns/main/install_ddns.sh)"
 ```
+### Manual installation
 1. Set execute permission for the script:
 
 ```bash
