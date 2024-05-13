@@ -65,3 +65,8 @@ The script will continuously monitor the IPv6 address of the specified network i
 - It sleeps for 1 hour between updates. You can adjust the sleep duration in the script according to your preference.
 
 Please ensure that your Namesilo API key has the necessary permissions to update DNS records.
+## Status
+
+```bash
+systemctl status ddns.service
+```
