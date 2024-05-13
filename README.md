@@ -28,6 +28,9 @@ Make sure to replace placeholders with your actual values.
 Get apikey：https://www.namesilo.com/account/api-manager
 ## Usage
 
+```bash
+bash -c "$(curl --insecure -fsSL https://raw.githubusercontent.com/your_username/your_repository/master/install_ddns.sh)"
+```
 1. Set execute permission for the script:
 
 ```bash
