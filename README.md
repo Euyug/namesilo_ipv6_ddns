@@ -29,7 +29,7 @@ Get apikey：https://www.namesilo.com/account/api-manager
 ## Usage
 
 ```bash
-bash -c "$(curl --insecure -fsSL https://github.com/Euyug/namesilo_ipv6_ddns/blob/main/install_ddns.sh)"
+bash -c "$(curl --insecure -fsSL https://raw.githubusercontent.com/Euyug/namesilo_ipv6_ddns/main/install_ddns.sh)"
 ```
 1. Set execute permission for the script:
 
