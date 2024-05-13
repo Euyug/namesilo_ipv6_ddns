@@ -21,10 +21,12 @@ else
 fi
 
 # Modify the configuration file with user input
-sed -i "s/YOUR_API_KEY/$API_KEY/" config.json
-sed -i "s/YOUR_DOMAIN/$DOMAIN/" config.json
-sed -i "s/YOUR_HOSTNAME/$HOSTNAME/" config.json
-sed -i "s/YOUR_NETWORK_INTERFACE/$NETWORK_INTERFACE/" config.json
+CONFIG_FILE="$(pwd)/config.json"
+echo "Config file: $CONFIG_FILE"
+sed -i "s/\"API_KEY\": \"your_apikey\"/\"API_KEY\": \"$API_KEY\"/" "$CONFIG_FILE"
+sed -i "s/\"DOMAIN\": \"your_domain\"/\"DOMAIN\": \"$DOMAIN\"/" "$CONFIG_FILE"
+sed -i "s/\"HOSTNAME\": \"your_subdomain\"/\"HOSTNAME\": \"$HOSTNAME\"/" "$CONFIG_FILE"
+sed -i "s/\"NETWORK_INTERFACE\": \"network_interface(ipv6)\"/\"NETWORK_INTERFACE\": \"$NETWORK_INTERFACE\"/" "$CONFIG_FILE"
 
 # Make the DDNS script executable
 chmod +x ddns.sh
