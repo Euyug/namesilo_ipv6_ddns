@@ -1,4 +1,3 @@
-**[English](README.md), [中文](README_zh.md).**
 # Namesilo IPv6 ddns
 
 Simple and Easy-to-Use IPv6 DDNS Script
