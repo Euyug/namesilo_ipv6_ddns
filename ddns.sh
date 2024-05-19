@@ -22,19 +22,18 @@ update_dns_record() {
     #获取响应
 response=$(curl -s "${rrid_URL}?version=1&type=xml&key=${API_KEY}&domain=${DOMAIN}")
 
-# 使用grep命令查找包含特定host的resource_record条目，并使用sed提取其中的record_id
-RRID=$(echo "$response" | grep "<host>${TARGET_VALUE}</host>" | sed -n 's/.*<record_id>\(.*\)<\/record_id>.*/\1/p')
+# 使用grep提取包含目标host值的<resource_record>段
+record=$(echo "$response" | grep -oP "<resource_record>.*?</resource_record>" | grep "$TARGET_VALUE")
 
+if [ -z "$record" ]; then
+    echo "未找到目标host值为 $TARGET_VALUE 的记录"
+    exit 1
+fi
 
+# 使用sed提取<record_id>值
+RRID=$(echo "$record" | sed -n 's/.*<record_id>\(.*\)<\/record_id>.*/\1/p')
 
-    
-#    RRID=$(curl -s "${rrid_URL}?version=1&type=xml&key=${API_KEY}&domain=${DOMAIN}" | \
-#           grep -oP '<resource_record[^\>]*>\K[^<]*' | grep "^$TARGET_VALUE:" | cut -d: -f1)
-    if [ -n "$RRID" ]; then
-        echo "RRID for ${TARGET_VALUE}: $RRID"
-    else
-        echo "未找到RRID"
-    fi
+echo "host:$TARGET_VALUE 的rrid为: $RRID"
     
     # 获取当前的公共 IPv6 地址
     CURRENT_IPv6=$(ip -6 addr show dev $NETWORK_INTERFACE | grep inet6 | grep -v temporary | grep -v deprecated | grep -v 'scope link' | grep -v 'scope host' | awk '{print $2}' | awk -F '/' '{print $1}')
@@ -75,5 +74,5 @@ RRID=$(echo "$response" | grep "<host>${TARGET_VALUE}</host>" | sed -n 's/.*<rec
 # 持续更新 DNS 记录
 while true; do
     update_dns_record
-    sleep 3600 # 等待 1 小时后再次更新
+    sleep 600 # 等待 1 小时后再次更新
 done
